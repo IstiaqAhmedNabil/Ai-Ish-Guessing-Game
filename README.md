@@ -33,13 +33,16 @@ gcc -Wall -o ai_guess main.c tree.c
 ## How it works
 
 ### Decision Tree
+
 Each `Node` is either:
+
 - A **question node**: has `text` = a yes/no question, plus `yes` and `no`
   child pointers.
 - A **leaf node** (`is_leaf == 1`): `text` = the AI's guess (an object
   name), with no children.
 
 ### Game Flow
+
 1. Start at the root node.
 2. While the current node is a question, ask it and follow the `yes` or
    `no` branch based on the user's answer (iterative traversal).
@@ -56,12 +59,14 @@ Each `Node` is either:
    - The updated tree is saved to `tree.dat`.
 
 ### Persistence
+
 - `tree.dat` stores the tree using a simple pre-order text serialization
   (`Q:...` for questions, `A:...` for answers, `#` for empty children).
 - `stats.dat` stores two integers: number of correct guesses and number
   of wrong guesses.
 
 ### Extra Features
+
 - **Statistics**: tracks and displays correct vs. wrong guesses and
   overall accuracy.
 - **Tree visualization**: prints the current knowledge tree to the
@@ -94,6 +99,7 @@ AI: Learned! Thank you.
 Next time, the AI will ask "Does it say meow?" before guessing Dog or Cat.
 
 ## Notes
+
 - Only one learning step can be undone at a time (the most recent one);
   the undo state is cleared once you start a new round's learning or use
   undo.
